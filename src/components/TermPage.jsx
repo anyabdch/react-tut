@@ -21,7 +21,8 @@ const TermFilter = ({terms, choice, setChoice}) => (
 );
 
 const Term = ({terms, choice}) => (
-    <CourseList courses={terms[choice]} /> 
+
+        <CourseList courses={terms[choice]} />
 );
 
 const TermPage = ({terms}) => {
