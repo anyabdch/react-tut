@@ -13,7 +13,7 @@ const Course = ({course}) => (
 
 const CourseList = ({courses}) => (
     <div className='course-list'>
-        { Object.entries(courses).map(([id, cur]) => <Course course={cur}/>)}
+        { courses.map(([id, cur]) => <Course course={cur}/>)}
     </div>
 );
 
