@@ -1,0 +1,8 @@
+.pop-up {
+    background-color: antiquewhite;
+    position: absolute;
+    width: 80%;
+    z-index: 100;
+    min-height: 50vw;
+    border: 2px solid gray;
+}

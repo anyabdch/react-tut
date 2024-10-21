@@ -2,8 +2,8 @@ import './CourseList.css';
 import { useState } from 'react';
 
 const Course = ({course, selected, toggleSelected}) => (
-    <div className={selected.includes(course.title) ? "card m-1 p-2 selected" : "card m-1 p-2"}
-        onClick={() => toggleSelected(course.title)}>
+    <div className={selected.includes(course) ? "card m-1 p-2 selected" : "card m-1 p-2"}
+        onClick={() => toggleSelected(course)}>
         <div className="card-body">
             <h5 className="card-title">{course.term} CS{course.number}</h5>
             <p className="card-text">{course.title}</p>
@@ -13,17 +13,12 @@ const Course = ({course, selected, toggleSelected}) => (
     </div>
 );
 
-const CourseList = ({courses}) => {
-    const  [selected, setSelected] = useState([]);
-
-    const toggleSelected = (item) => setSelected(
-        selected.includes(item)
-        ? selected.filter(x => x !== item)
-        : [...selected, item]
-    );
-    
+const CourseList = ({courses, selected, toggleSelected}) => {
     return( <div className='course-list'>
-                { courses.map(([id, cur]) => <Course key={cur.title} course={cur} selected={selected} toggleSelected={toggleSelected} />)}
+                { courses === selected 
+                    ? courses.map(cur => <Course key={cur.title} course={cur} selected={selected} toggleSelected={toggleSelected} />)
+                    : courses.map(([id, cur]) => <Course key={cur.title} course={cur} selected={selected} toggleSelected={toggleSelected} />)
+                    }
             </div>
     );
 };
