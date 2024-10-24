@@ -2,6 +2,7 @@ import {useState} from 'react';
 import CourseList from './CourseList';
 import PopUp from './PopUp';
 
+
 const TermButton = ({term, choice, setChoice}) => (
     <div className="m-2">
         <input type="radio" id={term} className="btn-check" 
