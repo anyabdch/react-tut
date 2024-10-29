@@ -1,6 +1,6 @@
 import './CourseList.css';
 import { useState } from 'react';
-import { sameTime, includesDay } from '../utilities/conflicts';
+import { unselectable } from '../utilities/conflicts';
 
 
 const Course = ({course, selected, toggleUpdate, conflicts}) => (
@@ -24,8 +24,8 @@ const CourseList = ({courses, selected, toggleSelected}) => {
     const [conflicts, setConflicts] = useState([]);
     const toggleConflicts = () => setConflicts(
         courses === selected
-        ? courses.filter(course => (includesDay(course, selected) || sameTime(course.meets, selected) ))   
-        : courses.filter(([_, course]) => (includesDay(course.meets, selected) || sameTime(course.meets, selected) ))  
+        ? []
+        : courses.filter(([_, course]) => unselectable(course.meets, selected))  
     );
 
     const toggleUpdate = (item) => {

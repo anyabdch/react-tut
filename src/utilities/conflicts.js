@@ -1,4 +1,4 @@
-export const includesDay = (class1, lst) => {
+const includesDay = (class1, lst) => {
     let class1_meets = class1.split(' ');
     let class1_days = class1_meets[0].split('')
 
@@ -15,7 +15,7 @@ export const includesDay = (class1, lst) => {
     return false;
 }
 
-export const sameTime = (class1, lst) =>  {
+const sameTime = (class1, lst) =>  {
     let class1_meets = class1.split(' ');
     let class1_start = class1_meets[1].substring(0, 5).split(':');
     let s_hour1 = (+ class1_start[0]);
@@ -47,4 +47,8 @@ export const sameTime = (class1, lst) =>  {
         }
     }
     return false;
+};
+
+export const unselectable = ({class1, lst}) => {
+    return(includesDay(class1, lst) && sameTime(class1, lst));
 }
