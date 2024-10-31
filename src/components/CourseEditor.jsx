@@ -3,8 +3,10 @@ import { useParams, useNavigate } from 'react-router-dom';
 
 const validateUserData = (key, val) => {
   switch (key) {
-    case 'title': case 'meeting':
+    case 'title':
       return /(^\w\w)/.test(val) ? '' : 'must be least two characters';
+    case 'meets':
+      return /(^$)/.test(val) | /(^[A-Za-z]* [0-2]:[0-5][0-9]$)/.test(val) | /(^[A-Za-z]* [0-2][0-9]:[0-5][0-9]$)/ ? '' : 'must contain days and start-end, e.g., MWF 12:00-13:20'; 
     default: return '';
   }
 };
@@ -42,7 +44,7 @@ const UserEditor = () => {
   return (
     <form onSubmit={submit} noValidate className={state.errors ? 'was-validated' : null}>
       <InputField name="title" text="Course Title" state={state} change={change} />
-      <InputField name="meetingTimes" text="Meeting Times" state={state} change={change} />
+      <InputField name="meets" text="Meeting Times" state={state} change={change} />
       <ButtonBar message={result?.message} />
     </form>
   )
