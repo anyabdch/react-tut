@@ -31,8 +31,9 @@ const ButtonBar = ({message, disabled}) => {
   );
 };
 
-const UserEditor = () => {
+const CourseEditor = () => {
   const { course } = useParams();
+  const [update, result] = useDbUpdate(`/courses/${course.id}`);
   const [state, change] = useFormData(validateUserData, course);
   const submit = (evt) => {
     evt.preventDefault();
@@ -50,4 +51,4 @@ const UserEditor = () => {
   )
 };
 
-export default UserEditor;
+export default CourseEditor;
